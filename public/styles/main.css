@@ -1,18 +1,291 @@
+@import "reset.css";
 @import "fonts.css";
 
 body {
-  background: #ec008c;
-  color: #fff;
+  color: #000;
+  font-family: "Galaxie";
 }
-
 h1 {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  margin: 0;
-  font: 20vmin/1 HUGEAvantGardeBold;
+  font: 44px/48px HUGEAvantGardeBold;
   letter-spacing: -0.06em;
-  text-align: center;
+  text-align: left; 
+  color: #000;
+  padding: 308px 22px 0;
+  white-space: pre-line;
+}
+
+.mobile {display: block;}
+.desktop {display: none;}
+.overlay {
+  -webkit-transition: all 325ms ease;
+  transition: all 325ms ease;
+  
+}
+.overlay.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.logo {
+  width: 50px; 
+  height: 24px;
+  position: absolute;
+  margin: 20px 24px 20px 24px;
+  left: -100%;
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+}
+
+.logo img {width: 100%;}
+
+.menu {
+  position: relative;
+  display: inline-block;
+  width: 72px;
+  height: 20px;
+  margin: 20px 14px;
+  left: 0;
+  background: url('../images/toggle-open.svg') no-repeat center;
+  background-size: cover;
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+}
+
+.menu.active {
+  height: 18px;
+  background: url('../images/toggle-close.svg') no-repeat center;
+}
+
+.menu.active {left: 80%;}
+.menu.active ~ .logo  {left: 0;}
+
+.nav {
+  display: block;
+  position: relative;
+  background: #ec008c;
+  height: 60px;
+  z-index: 1;
+}
+
+.nav small {
+  position: relative;
+  left: -100%;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 12px;
+  line-height: 48px;
+  margin-left: 24px;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.nav-main.active + small {left: 0;}
+
+.nav-main {
+  display: block;
+  position: relative;
+  width: 288px;
+  left: -100%;
+  padding: 12px 0;
+  background: #fff;
+  min-height: 1024px;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.nav-main.active {left: 0;}
+
+.nav-main a {
+  display: block;
+  white-space: nowrap;
+  color: #000;
+  line-height: 48px;
+  text-decoration: none;
+  padding: 0 24px;
+}
+
+.nav-main a:hover {background: #eee;}
+
+.nav-main > li > a {
+  font-family: "HUGEAvantGardeBold", sans-serif;
+  font-size: 21px;
+}
+
+.nav-main--sub {
+  visibility: hidden;
+  height: 0;
+}
+
+.nav-main--sub a {font-size:  16px}
+
+.nav-main--sub a:hover {color: #ec008c;}
+
+.nav-main--sub-trigger:after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 13px;
+  float: right;
+  margin-top: 18px;
+  background: url('../images/arrow.svg') no-repeat;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.active.nav-main--sub-trigger:after {
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.active.nav-main--sub-trigger + .nav-main--sub{
+  visibility: visible;
+  height: auto;
+  left: 0;
+}
+
+.main-wrapper {overflow: hidden;}
+
+.main {
+  position: relative;
+  left: 0;
+  -webkit-transition: all 325ms ease;
+  transition: all 325ms ease;
+}
+
+.main.active {
+  position: relative;
+  left: 288px;
+  -webkit-transition: all 325ms ease;
+  transition: all 325ms ease;
+}
+
+.main-header {
+  min-height: 260px;
+  background: url('../images/background-image.jpg') center no-repeat;
+  background-size: cover;
+}
+
+.main-content {
+  margin-top: 176px;
+  padding: 0 24px;
+  font: 14px/24px "Galaxie";
+  text-align: justify;
+}
+
+
+/*=== Desktop Styles ===*/
+
+@media (min-width: 768px){
+  h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 860px;
+    padding: 0;
+    font: 120px/132px HUGEAvantGardeBold;
+    letter-spacing: -0.06em;
+    text-align: center; 
+    color: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .mobile {display: none}
+  .desktop {display: block;}
+  .logo { 
+    position: relative; 
+    width: 60px;
+    float:left;
+    left: 0; 
+    margin: 0 24px 0 0; 
+    padding: 24px; 
+  }
+  .nav {height: 72px;}
+  .nav-main {
+    width: auto; 
+    padding: 0; 
+    left: 0;
+    background: none; 
+    -webkit-transition: none; 
+    transition: none;
+  }
+
+  .nav-main > li {
+    position: relative; 
+    display: block; 
+    float: left; 
+    left: 0;
+  }
+  
+  .nav-main > li > a {
+    display: block; 
+    padding: 14px 24px 10px; 
+    color: #fff;
+  }
+
+  .nav-main > li > a:hover {background: #fff; color: #ec008c;}
+  
+  .nav-main > li > a:after {display: none;}
+
+  .nav-main--sub {
+    position: absolute;
+    min-width: 222px;
+    left: -99999px;
+    background: rgb(255, 255, 255);
+    padding: 12px 0;
+    -webkit-transition: none;
+    transition: none;
+  }
+
+  .nav-main > li > .nav-main--sub-trigger.active {
+    background: white; 
+    color: #ec008c;
+  }
+  .nav-main--sub-trigger.active + .nav-main--sub {
+    left: 0; 
+    visibility: visible; 
+    height: auto;
+  }
+
+  .main-wrapper {overflow: auto;}
+
+  .main {position: inherit;}
+
+  .main.active {
+    position: inherit;
+    left: 0;
+  }
+
+  .main-header {height: 640px;}
+
+  .main-content {
+    max-width: 960px;
+    margin: 44px auto;
+    font: 24px/36px "Galaxie";
+  }
+}
+
+@media (min-width: 768px) and (max-width: 947px){
+    .nav-main > li > a {
+    font-family: "HUGEAvantGardeBold", sans-serif;
+    font-size: 18px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
