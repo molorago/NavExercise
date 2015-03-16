@@ -50,17 +50,15 @@ function toggleMenu(e){
 	if (this.classList.contains('active')){
 		this.classList.remove('active');
 		document.getElementById('nav-main').classList.remove('active');
-		document.getElementById('logo').classList.remove('active');
 		document.getElementById('overlay').classList.remove('active');
 	} else {
 		this.classList.add('active');
 		document.getElementById('nav-main').classList.add('active');
-		document.getElementById('logo').classList.add('active');
 		document.getElementById('overlay').classList.add('active');
 	}
 }
 
-var data = "nav.json";
+var data = "/scripts/nav.json";
 var xml  = new XMLHttpRequest();
 xml.open('GET', data , true);
 xml.onreadystatechange = function(){
